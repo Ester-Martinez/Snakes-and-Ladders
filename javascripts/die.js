@@ -1,5 +1,5 @@
-const minRolls = 8;
-const maxRolls = 14;
+const minRolls = 2;
+const maxRolls = 3;
 
 const die1 = new Image();
 die1.src = "./Images/die1.png";
@@ -22,6 +22,7 @@ function createRoll() {
   return Math.floor(Math.random() * die.sides) + 1;
 }
 
+
 var die = {
   sides: 6,
   roll: function() {
@@ -38,28 +39,58 @@ function drawDie() {
     switch (result) {
       case 1:
           ctx.save();
-          ctx.translate((w / 5) * 4 - 30, h2);
-          die1.onload = () => {
-          ctx.drawImage(die1, positionX, positionY, (w / 5) * 4, h - 30);}
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die1, 0, 0, 160, 160);
           ctx.restore();
         break;
       case 2:
-        console.log(2);
+          ctx.save();
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die2, 0, 0, 160, 160);
+          ctx.restore();
         break;
       case 3:
-        console.log(3);
+          ctx.save();
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die3, 0, 0, 160, 160);
+          ctx.restore();
         break;
       case 4:
-        console.log(4);
+          ctx.save();
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die4, 0, 0, 160, 160);
+          ctx.restore();
         break;
       case 5:
-        console.log(5);
+          ctx.save();
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die5, 0, 0, 160, 160);
+          ctx.restore();
         break;
       case 6:
-        console.log(6);
+          ctx.save();
+          ctx.translate(w * 0.84, h * 0.7);
+          ctx.clearRect(0, 0, 160, 160);
+          ctx.drawImage(die6, 0, 0, 160, 160);
+          ctx.restore();
         break;
     }
   });
 }
-let intervalDIE = setInterval()
-drawDie()
+// let intervalDIE = setInterval();
+// ;
+function throwDie() {
+  window.onkeydown = function(e) {
+    switch (e.key) {
+      case "Enter":
+        drawDie();
+        break;
+    }
+  };
+  counter = 0;
+}
