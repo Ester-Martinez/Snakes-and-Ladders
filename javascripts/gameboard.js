@@ -23,7 +23,7 @@ board.src = "./Images/template-snakes.png";
 function drawBoard() {
   let positionX = 0;
   let positionY = 0;
-    ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
+  ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
 }
 
 // Draw title
@@ -37,22 +37,20 @@ function drawBoard() {
 
 // Draw the space where the die animation will be displayed
 function drawDieSpace() {
-  ctx.save();
-  ctx.translate(w * 0.6, h2);
   ctx.beginPath();
-  ctx.rect(0, 0, w * 0.3, h2 - 50);
+  ctx.rect(w * 0.78, h2, w * 0.2, h2 - 50);
   ctx.strokeStyle = "black";
   ctx.stroke();
   ctx.closePath();
-  ctx.restore();
 }
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
-  ctx.translate(w * 0.75, h2 + 50);
+  ctx.translate(w * 0.88, h2 + 50);
   ctx.font = "30px Verdana";
   ctx.textAlign = "center";
-  ctx.fillText("Click ENTER to THROW THE DIE", 0, 0);
+  ctx.fillText("Click ENTER", 0, 0);
+  ctx.fillText("to THROW THE DIE", 0, 50);
   ctx.restore();
 }
 

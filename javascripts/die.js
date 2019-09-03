@@ -24,25 +24,26 @@ var die = {
     return this.result = Math.floor(Math.random() * die.sides) + 1;
   }
 };
+
 function drawDie() {
   switch (die.result) {
     case 1:
-      ctx.drawImage(die1, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die1, w * 0.825, h * 0.68, 200, 200);
       break;
     case 2:
-      ctx.drawImage(die2, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die2, w * 0.825, h * 0.68, 200, 200);
       break;
     case 3:
-      ctx.drawImage(die3, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die3, w * 0.825, h * 0.68, 200, 200);
       break;
     case 4:
-      ctx.drawImage(die4, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die4, w * 0.825, h * 0.68, 200, 200);
       break;
     case 5:
-      ctx.drawImage(die5, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die5, w * 0.825, h * 0.68, 200, 200);
       break;
     case 6:
-      ctx.drawImage(die6, w * 0.7, h * 0.63, 200, 200);
+      ctx.drawImage(die6, w * 0.82, h * 0.68, 200, 200);
       break;
   }
 }

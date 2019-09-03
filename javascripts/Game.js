@@ -5,8 +5,8 @@ function startGame() {
   let counter = 0;
   this.intervalID = setInterval(() => {
     resetCanvas();
-    userControls();
     drawGameSpace();
+    userControls();
     drawPawns();
     drawDie();
     counter++;
