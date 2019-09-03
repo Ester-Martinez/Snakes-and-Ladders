@@ -1,6 +1,4 @@
-function resetCanvas() {
-  ctx.clearRect(0, 0, w, h);
-}
+
 
 const redPawnImg = new Image();
 redPawnImg.src = "./Images/redPawn.png";
@@ -21,18 +19,48 @@ class Pawn {
     ctx.restore();
     // }
   }
-  moveRight(){
-    
+  moveLeft() {
+    this.x -= speed;
+    console.log(this.x)
+    // if (this.position.x < 80) {
+    //   this.position.x = 80;
+    // }
+  }
+  moveRight() {
+    this.x += speed;
+    console.log(this.x)
+
+    // if (this.position.x > w2 - (w2 * 1) / 5) {
+    //   this.position.x = w2 - (w2 * 1) / 5;
+    // }
+  }
+  moveUp() {
+    this.y -= speed;
+    console.log(this.y)
+
+    // if (this.position.x < 80) {
+    //   this.position.x = 80;
+    // }
+  }
+  moveDown() {
+    this.y += speed;
+    console.log(this.y)
+
+    // if (this.position.x > w2 - (w2 * 1) / 5) {
+    //   this.position.x = w2 - (w2 * 1) / 5;
+    // }
   }
 }
-let redPawn = new Pawn(redPawnImg, 70, h * 0.8);
-let yellowPawn = new Pawn(yellowPawnImg, 100, h * 0.8);
+let redPawn = new Pawn(redPawnImg, 70, 675);
+let yellowPawn = new Pawn(yellowPawnImg, 100, 675);
 
 function drawPawns() {
   redPawn.drawPawn();
   yellowPawn.drawPawn();
 }
-redPawnImg.onload = drawPawns;
+
+
+
 
 // var redX = 70;
 // var redY = h * 0.8;

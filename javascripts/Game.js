@@ -9,8 +9,8 @@ var turnoAmarilla = false;
 var movimiento = 0; //Indica el avance o retroceso de la ficha que
 // tiene el turno.
 
-drawGameSpace();
-drawRedPawn()
+
+// drawGameSpace();
 
 window.onload = function() {
   startGame();
@@ -18,7 +18,12 @@ window.onload = function() {
 function startGame() {
   let counter = 0;
   this.intervalID = setInterval(() => {
+    resetCanvas();
+    drawPawns();
+    drawGameSpace();
+    userControls()
+    drawDie();
     counter++;
   }, 1000 / 60);
-  throwDie();
+  
 }

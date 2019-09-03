@@ -16,6 +16,7 @@ function setCanvasDimensions() {
 setCanvasDimensions();
 window.onresize = setCanvasDimensions;
 
+
 // Draw board in window
 // function drawBoard() {
 //   let board = new Image();
@@ -42,18 +43,16 @@ function drawDieSpace() {
   ctx.save();
   ctx.translate(w*0.6, h2);
   ctx.beginPath();
-  ctx.rect(0, 0, w * 0.38 - 10, h2 - 30);
+  ctx.rect(0, 0, w * 0.3, h2 - 50);
   ctx.strokeStyle = "black";
   ctx.stroke();
-  ctx.fillStyle = "white";
-  ctx.fill();
   ctx.closePath();
   ctx.restore();
 }
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
-  ctx.translate(w * 0.78, h2 + 50);
+  ctx.translate(w * 0.75, h2 + 50);
   ctx.font = "30px Verdana";
   ctx.textAlign = "center";
   ctx.fillText("Click ENTER to THROW THE DIE", 0, 0);
@@ -68,4 +67,8 @@ function drawGameSpace() {
   // drawTitle()
   drawDieSpace();
   throwDieInstructions();
+}
+function resetCanvas() {
+ctx.clearRect(0, 0, w, h);
+
 }

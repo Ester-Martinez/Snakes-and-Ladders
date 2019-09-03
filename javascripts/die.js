@@ -17,176 +17,33 @@ die6.src = "./Images/die6.png";
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-// function createRoll() {
-//   return Math.floor(Math.random() * die.sides) + 1;
-// }
-
 var die = {
   sides: 6,
-  roll: function() {
-    // let numberOfRolls = randomInt(minRolls, maxRolls);
-    // let rollResults = Array(numberOfRolls)
-    //   .fill()
-    //   .map(createRoll);
-    // return rollResults;
-    return Math.floor(Math.random() * die.sides) + 1;
+  result: 0,
+  roll() {
+    return this.result = Math.floor(Math.random() * die.sides) + 1;
   }
 };
-
-// function drawDie() {
-//   die.roll().forEach(function(result) {
-//     switch (result) {
-//       case 1:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die1, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 2:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die2, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 3:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die3, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 4:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die4, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 5:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die5, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 6:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die6, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//     }
-//   });
-// }
-
 function drawDie() {
-  switch (die.roll()) {
+  switch (die.result) {
     case 1:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die1, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die1, w * 0.7, h * 0.63, 200, 200);
       break;
     case 2:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die2, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die2, w * 0.7, h * 0.63, 200, 200);
       break;
     case 3:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die3, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die3, w * 0.7, h * 0.63, 200, 200);
       break;
     case 4:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die4, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die4, w * 0.7, h * 0.63, 200, 200);
       break;
     case 5:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die5, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die5, w * 0.7, h * 0.63, 200, 200);
       break;
     case 6:
-      ctx.save();
-      ctx.translate(w * 0.84, h * 0.7);
-      ctx.clearRect(0, 0, 160, 160);
-      ctx.drawImage(die6, 0, 0, 160, 160);
-      ctx.restore();
+      ctx.drawImage(die6, w * 0.7, h * 0.63, 200, 200);
       break;
   }
 }
 
-// function drawDie() {
-//   for (i=0; i<die.roll().length - 1; i++) {
-//     switch (die.roll()[i]) {
-//       case 1:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die1, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 2:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die2, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 3:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die3, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 4:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die4, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 5:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die5, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//       case 6:
-//           ctx.save();
-//           ctx.translate(w * 0.84, h * 0.7);
-//           ctx.clearRect(0, 0, 160, 160);
-//           ctx.drawImage(die6, 0, 0, 160, 160);
-//           ctx.restore();
-//         break;
-//     }
-//   }
-//   }
-
-// let intervalDIE = setInterval();
-// ;
-function throwDie() {
-  window.onkeydown = function(e) {
-    switch (e.key) {
-      case "Enter":
-        drawDie();
-        break;
-    }
-  };
-}
