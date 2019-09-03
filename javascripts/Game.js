@@ -1,8 +1,5 @@
 window.onload = function() {
-  drawGameSpace();
-    userControls();
-    drawPawns();
-    drawDie();
+  startGame();
 };
 function startGame() {
   let counter = 0;
