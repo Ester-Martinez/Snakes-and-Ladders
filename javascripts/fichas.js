@@ -35,6 +35,7 @@ class Pawn {
 let redPawn = new Pawn(redPawnImg, 163, 700);
 let yellowPawn = new Pawn(yellowPawnImg, 108, 700);
 
+
 function drawPawns() {
   redPawn.drawPawn();
   yellowPawn.drawPawn();

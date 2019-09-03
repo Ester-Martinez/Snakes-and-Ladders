@@ -10,8 +10,8 @@ const PI_HALF = Math.PI / 2;
 
 // Set dimensions of the game space
 function setCanvasDimensions() {
-  myCanvasDOMEl.setAttribute(`width`, `${w}px`);
-  myCanvasDOMEl.setAttribute(`height`, `${h}px`);
+  myCanvasDOMEl.setAttribute(`width`, `${w*0.99}px`);
+  myCanvasDOMEl.setAttribute(`height`, `${h*0.99}px`);
 }
 setCanvasDimensions();
 window.onresize = setCanvasDimensions;
