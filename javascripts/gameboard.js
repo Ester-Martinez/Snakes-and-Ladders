@@ -10,25 +10,22 @@ const PI_HALF = Math.PI / 2;
 
 // Set dimensions of the game space
 function setCanvasDimensions() {
-  myCanvasDOMEl.setAttribute(`width`, `${w - 10}px`);
-  myCanvasDOMEl.setAttribute(`height`, `${h - 30}px`);
+  myCanvasDOMEl.setAttribute(`width`, `${w}px`);
+  myCanvasDOMEl.setAttribute(`height`, `${h}px`);
 }
 setCanvasDimensions();
 window.onresize = setCanvasDimensions;
 
-
 // Draw board in window
-// function drawBoard() {
-//   let board = new Image();
-//   board.src = "./Images/template-snakes.png";
+let board = new Image();
+board.src = "./Images/template-snakes.png";
 
-//   let positionX = 0;
-//   let positionY = 0;
-//   board.onload = () => {
-//     ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
-//   };
-  
-// }
+function drawBoard() {
+  let positionX = 0;
+  let positionY = 0;
+    ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
+}
+
 // Draw title
 // function drawTitle(){
 // ctx.save();
@@ -41,7 +38,7 @@ window.onresize = setCanvasDimensions;
 // Draw the space where the die animation will be displayed
 function drawDieSpace() {
   ctx.save();
-  ctx.translate(w*0.6, h2);
+  ctx.translate(w * 0.6, h2);
   ctx.beginPath();
   ctx.rect(0, 0, w * 0.3, h2 - 50);
   ctx.strokeStyle = "black";
@@ -63,12 +60,11 @@ function throwDieInstructions() {
 // TODO: making them random
 
 function drawGameSpace() {
-  // drawBoard();
+  drawBoard();
   // drawTitle()
   drawDieSpace();
   throwDieInstructions();
 }
 function resetCanvas() {
-ctx.clearRect(0, 0, w, h);
-
+  ctx.clearRect(0, 0, w, h);
 }
