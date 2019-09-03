@@ -17,16 +17,17 @@ setCanvasDimensions();
 window.onresize = setCanvasDimensions;
 
 // Draw board in window
-function drawBoard() {
-  let board = new Image();
-  board.src = "./Images/template-snakes.png";
+// function drawBoard() {
+//   let board = new Image();
+//   board.src = "./Images/template-snakes.png";
 
-  let positionX = 0;
-  let positionY = 0;
-  board.onload = () => {
-    ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
-  };
-}
+//   let positionX = 0;
+//   let positionY = 0;
+//   board.onload = () => {
+//     ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
+//   };
+  
+// }
 // Draw title
 // function drawTitle(){
 // ctx.save();
@@ -39,9 +40,9 @@ function drawBoard() {
 // Draw the space where the die animation will be displayed
 function drawDieSpace() {
   ctx.save();
-  ctx.translate(w * 0.8 - 30, h2);
+  ctx.translate(w*0.6, h2);
   ctx.beginPath();
-  ctx.rect(0, 0, w * 0.2 - 10, h2 - 30);
+  ctx.rect(0, 0, w * 0.38 - 10, h2 - 30);
   ctx.strokeStyle = "black";
   ctx.stroke();
   ctx.fillStyle = "white";
@@ -52,11 +53,10 @@ function drawDieSpace() {
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
-  ctx.translate(w * 0.88, h2 + 50);
+  ctx.translate(w * 0.78, h2 + 50);
   ctx.font = "30px Verdana";
   ctx.textAlign = "center";
-  ctx.fillText("Click ENTER", 0, 0);
-  ctx.fillText("to THROW THE DIE", 0, 40);
+  ctx.fillText("Click ENTER to THROW THE DIE", 0, 0);
   ctx.restore();
 }
 
@@ -64,7 +64,7 @@ function throwDieInstructions() {
 // TODO: making them random
 
 function drawGameSpace() {
-  drawBoard();
+  // drawBoard();
   // drawTitle()
   drawDieSpace();
   throwDieInstructions();
