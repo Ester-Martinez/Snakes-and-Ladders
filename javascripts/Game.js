@@ -9,6 +9,7 @@ function startGame() {
     userControls();
     drawPawns();
     drawDie();
+    checkPositionRed()
     counter++;
   }, 1000 / 60);
   

@@ -1,5 +1,7 @@
 const minRolls = 2;
 const maxRolls = 3;
+var r = 0; //Casilla para la roja
+var y = 0; //Casilla para la amarilla.
 
 const die1 = new Image();
 die1.src = "./Images/die1.png";
@@ -21,7 +23,10 @@ var die = {
   sides: 6,
   result: 0,
   roll() {
-    return this.result = Math.floor(Math.random() * die.sides) + 1;
+    rollResult = Math.floor(Math.random() * die.sides) + 1
+    r += rollResult;
+    if (r>45) {r=45}
+    return this.result = rollResult;
   }
 };
 

@@ -1,12 +1,10 @@
 const speed = 10; //Velocidad movimiento fichas
 var jugadores = [1, 2]; //Número de jugadores
 var numTurnos = jugadores.length;
-var r; //Casilla para la roja
-var a; //Casilla para la amarilla.
-var rojaX, rojaY, amarillaX, amarillaY; //Coordenadas de las fichas.
+
 var turno; //Quien tira el dado.
-var turnoRoja = false;
-var turnoAmarilla = false;
+var turnRed = false;
+var turnYellow = false;
 var movimiento = 0; //Indica el avance o retroceso de la ficha que
 // tiene el turno.
 
