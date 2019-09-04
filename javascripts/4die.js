@@ -30,7 +30,6 @@ class Die {
     return (this.result = rollResult);
   }
   drawDieImg(dieImg) {
-    debugger
     ctx.drawImage(
       dieImg,
       this.widthPos,

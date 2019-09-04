@@ -11,7 +11,7 @@ class Pawn {
     this.color = color;
     this.currentPos = 0;
     this.destinyPos = 0;
-    this.finalPos = 1;
+    this.finalPos = 0;
     this.order = order;
   }
   drawPawn() {
@@ -38,59 +38,57 @@ class Pawn {
   }
   checkPosition() {
     if (this.color === "red") {
-      debugger
-      if (this.currentPos === this.destinyPos) {
-        this.destinyPos++;
-        if (this.destinyPos === this.finalPos) {
-          return turn++;
-        }
-      } else {
-        if (this.currentPos < this.destinyPos) {
+      if (this.currentPos < this.finalPos) {
+        if (this.currentPos === this.destinyPos) {
+          this.destinyPos++;
+        } else {
           if (
             this.x === board1[this.destinyPos].playerRedXPos &&
             this.y === board1[this.destinyPos].playerRedYPos
           ) {
-            this.currentPos++
-          } else if (this.x < board1[this.destinyPos].playerRedXPos) {
-            this.moveRight();
-          } else if (this.x > board1[this.destinyPos].playerRedXPos) {
-            this.moveLeft();
+            this.currentPos++;
+            if (this.currentPos === this.finalPos) {
+              ++turn;
+            }
           } else if (this.y < board1[this.destinyPos].playerRedYPos) {
             this.moveDown();
           } else if (this.y > board1[this.destinyPos].playerRedYPos) {
             this.moveUp();
+          } else if (this.x < board1[this.destinyPos].playerRedXPos) {
+            this.moveRight();
+          } else if (this.x > board1[this.destinyPos].playerRedXPos) {
+            this.moveLeft();
           }
         }
       }
     }
     if (this.color === "yellow") {
-      if (this.currentPos === this.destinyPos) {
-        this.destinyPos++;
-        if (this.destinyPos === this.finalPos) {
-          return turn++;
-        }
-      } else {
-        if (this.currentPos < this.destinyPos) {
+      if (this.currentPos < this.finalPos) {
+        if (this.currentPos === this.destinyPos) {
+          this.destinyPos++;
+        } else {
           if (
             this.x === board1[this.destinyPos].PlayerYellXPos &&
             this.y === board1[this.destinyPos].PlayerYellYPos
           ) {
             this.currentPos++;
-          } else if (this.x < board1[this.destinyPos].PlayerYellXPos) {
-            this.moveRight();
-          } else if (this.x > board1[this.destinyPos].PlayerYellXPos) {
-            this.moveLeft();
+            if (this.currentPos === this.finalPos) {
+              ++turn;
+            }
           } else if (this.y < board1[this.destinyPos].PlayerYellYPos) {
             this.moveDown();
           } else if (this.y > board1[this.destinyPos].PlayerYellYPos) {
             this.moveUp();
+          } else if (this.x < board1[this.destinyPos].PlayerYellXPos) {
+            this.moveRight();
+          } else if (this.x > board1[this.destinyPos].PlayerYellXPos) {
+            this.moveLeft();
           }
         }
       }
     }
   }
 }
-
 
 let redPawn = new Pawn(
   redPawnImg,
@@ -119,10 +117,10 @@ function checkTurn() {
     turn = 1;
   }
   if (redPawn.order === turn) {
-    return die.roll(redPawn);
+    die.roll(redPawn);
   }
   if (yellowPawn.order === turn) {
-    return die.roll(yellowPawn);
+    die.roll(yellowPawn);
   }
 }
 function checkPositionActivePlayer() {
