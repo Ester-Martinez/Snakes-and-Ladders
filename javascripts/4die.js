@@ -29,61 +29,35 @@ class Die {
     }
     return (this.result = rollResult);
   }
+  drawDieImg(dieImg) {
+    debugger
+    ctx.drawImage(
+      dieImg,
+      this.widthPos,
+      this.heightPos,
+      this.sideDimension,
+      this.sideDimension
+    )
+  }
   drawDie() {
     switch (this.result) {
       case 1:
-        ctx.drawImage(
-          die1,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die1);
         break;
       case 2:
-        ctx.drawImage(
-          die2,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die2);
         break;
       case 3:
-        ctx.drawImage(
-          die3,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die3);
         break;
       case 4:
-        ctx.drawImage(
-          die4,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die4);
         break;
       case 5:
-        ctx.drawImage(
-          die5,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die5);
         break;
       case 6:
-        ctx.drawImage(
-          die6,
-          this.widthPos,
-          this.heightPos,
-          this.sideDimension,
-          this.sideDimension
-        );
+        this.drawDieImg(die6);
         break;
     }
   }

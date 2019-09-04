@@ -11,7 +11,7 @@ class Pawn {
     this.color = color;
     this.currentPos = 0;
     this.destinyPos = 0;
-    this.finalPos = 0;
+    this.finalPos = 1;
     this.order = order;
   }
   drawPawn() {
