@@ -11,9 +11,7 @@ die5.src = "./Images/die5.png";
 const die6 = new Image();
 die6.src = "./Images/die6.png";
 
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+
 
 class Die {
   constructor(sides, widthPos, heightPos, sideDimension) {

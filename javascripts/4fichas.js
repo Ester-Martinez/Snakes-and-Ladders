@@ -4,7 +4,7 @@ const yellowPawnImg = new Image();
 yellowPawnImg.src = "./Images/yellowPawn.png";
 
 class Pawn {
-  constructor(image, x, y, order, map) {
+  constructor(image, x, y, order) {
     this.image = image;
     this.x = x;
     this.y = y;
@@ -12,7 +12,6 @@ class Pawn {
     this.destinyPos = 0;
     this.finalPos;
     this.order = order;
-    this.map = map;
   }
   drawPawn() {
     ctx.save();
@@ -58,8 +57,8 @@ class Pawn {
     }
   }
 }
-let redPawn = new Pawn(redPawnImg, 133, 560, 1, redMap);
-let yellowPawn = new Pawn(yellowPawnImg, 93, 560, 2, yellowMap);
+let redPawn = new Pawn(redPawnImg, 133, 560, 1);
+let yellowPawn = new Pawn(yellowPawnImg, 93, 560, 2);
 
 function drawPawns() {
   redPawn.drawPawn();

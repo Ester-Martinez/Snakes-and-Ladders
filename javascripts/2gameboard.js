@@ -21,9 +21,17 @@ let board = new Image();
 board.src = "./Images/template-snakes.png";
 
 function drawBoard() {
-  let positionX = 0;
-  let positionY = 0;
-  ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
+//   let positionX = 0;
+//   let positionY = 0;
+//   ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
+board1.forEach(() => {
+  debugger
+  ctx.beginPath();
+  ctx.color = this.color;
+  ctx.rect(this.x, this.y, width, width);
+  ctx.fill();
+  ctx.closePath();
+});
 }
 
 // Draw title
