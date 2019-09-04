@@ -4,13 +4,14 @@ const yellowPawnImg = new Image();
 yellowPawnImg.src = "./Images/yellowPawn.png";
 
 class Pawn {
-  constructor(image, x, y, order) {
+  constructor(image, x, y, order, color) {
     this.image = image;
     this.x = x;
     this.y = y;
+    this.color = color;
     this.currentPos = 0;
     this.destinyPos = 0;
-    this.finalPos;
+    this.finalPos = 0;
     this.order = order;
   }
   drawPawn() {
@@ -19,7 +20,6 @@ class Pawn {
     ctx.drawImage(this.image, 0, 0, 28 * 1.2, 52 * 1.2);
     ctx.restore();
   }
-
   moveLeft() {
     this.x -= speed;
     console.log(this.x);
@@ -37,28 +37,44 @@ class Pawn {
     console.log(this.y);
   }
   checkPosition() {
-    if (this.currentPos === this.destinyPos) {
-      this.destinyPos++;
-      if (this.destinyPos === this.finalPos) {
-        return turn++;
-      }
-    } else if (this.currentPos < this.destinyPos) {
-      if (this.x < this.map[this.destinyPos][0]) {
-        this.moveRight();
-      } else if (this.x > this.map[this.destinyPos][0]) {
-        this.moveLeft();
-      } else {
-        if (this.y < this.map[this.destinyPos][1]) {
-          this.moveDown();
-        } else if (this.y > this.map[this.destinyPos][1]) {
-          this.moveUp();
+    if (this.color === "red") {
+      if (this.currentPos === this.destinyPos) {
+        this.destinyPos++;
+        if (this.destinyPos === this.finalPos) {
+          return turn++;
+        }
+      } else if (this.currentPos < this.destinyPos) {
+        if (this.x < board1[this.destinyPos].x) {
+          this.moveRight();
+        } else if (this.x > board1[this.destinyPos][0]) {
+          this.moveLeft();
+        } else {
+          if (this.y < board1[this.destinyPos][1]) {
+            this.moveDown();
+          } else if (this.y > board1[this.destinyPos][1]) {
+            this.moveUp();
+          }
         }
       }
     }
+    if (this.color === "yellow") {
+    }
   }
 }
-let redPawn = new Pawn(redPawnImg, 113, 590, 1);
-let yellowPawn = new Pawn(yellowPawnImg, 93, 590, 2);
+let redPawn = new Pawn(
+  redPawnImg,
+  board1[0].playerRedXPos,
+  board1[0].playerRedYPos,
+  1,
+  "red"
+);
+let yellowPawn = new Pawn(
+  yellowPawnImg,
+  board1[0].PlayerYellXPos,
+  board1[0].PlayerYellYPos,
+  2,
+  "yellow"
+);
 
 function drawPawns() {
   redPawn.drawPawn();

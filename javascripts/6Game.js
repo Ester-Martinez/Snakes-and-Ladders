@@ -3,7 +3,6 @@ window.onload = function() {
 };
 function startGame() {
   let counter = 0;
-
   this.intervalID = setInterval(() => {
     resetCanvas();
     drawGameSpace();

@@ -7,7 +7,8 @@ let colors = [
   "rgb(203,239,101)",
   "rgb(240,115,100)",
   "rgb(165,148,203)",
-  "rgb(248,236,136)"
+  "rgb(248,236,136)",
+  "white"
 ];
 function randomColors() {
   function createRoll() {
@@ -37,68 +38,129 @@ function randomColors() {
 let randomColorsToPaint = randomColors();
 
 class Squares {
-  constructor(x, y, color) {
+  constructor(
+    x,
+    y,
+    color,
+    playerRedXPos,
+    playerRedYPos,
+    PlayerYellXPos,
+    PlayerYellYPos
+  ) {
     this.x = x;
     this.y = y;
     this.color = color;
-    let player1 = false;
-    let player2 = false;
+    this.playerRedXPos = playerRedXPos;
+    this.playerRedYPos = playerRedYPos;
+    this.PlayerYellXPos = PlayerYellXPos;
+    this.PlayerYellYPos = PlayerYellYPos;
+    let playerRed = false;
+    let playerYellow = false;
   }
 }
 
 const width = 100;
+const padding = 60;
 let board1 = Array(46)
   .fill()
   .map((x, idx) => {
     if (idx <= 8) {
-      x = idx * width;
+      x = idx * width + padding;
       y = h - 110;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx === 9) {
-      x = 800 - (idx - 9) * width;
+      x = 800 - (idx - 9) * width + padding;
       y = h - 210;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx > 9 && idx <= 17) {
-      x = 800 - (idx - 9) * width;
+      x = 800 - (idx - 9) * width + padding;
       y = h - 230;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx === 18) {
-      x = (idx - 18) * width;
+      x = (idx - 18) * width + padding;
       y = h - 330;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx > 18 && idx <= 26) {
-      x = (idx - 18) * width;
+      x = (idx - 18) * width + padding;
       y = h - 350;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx === 27) {
-      x = 800 - (idx - 27) * width;
+      x = 800 - (idx - 27) * width + padding;
       y = h - 450;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx > 27 && idx <= 35) {
-      x = 800 - (idx - 27) * width;
+      x = 800 - (idx - 27) * width + padding;
       y = h - 470;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx === 36) {
-      x = (idx - 36) * width;
+      x = (idx - 36) * width + padding;
       y = h - 570;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx > 36 && idx <= 44) {
-      x = (idx - 36) * width;
+      x = (idx - 36) * width + padding;
       y = h - 590;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
     if (idx === 45) {
-      x = 800 - (idx - 45) * width;
+      x = 800 - (idx - 45) * width + padding;
       y = h - 690;
       color = colors[randomColorsToPaint[idx]];
+      playerRedXPos = x + 25;
+      playerRedYPos = y + 20;
+      PlayerYellXPos = x + 58;
+      PlayerYellYPos = y + 20;
     }
-    return new Squares(x, y, color);
+    return new Squares(
+      x,
+      y,
+      color,
+      playerRedXPos,
+      playerRedYPos,
+      PlayerYellXPos,
+      PlayerYellYPos
+    );
   });

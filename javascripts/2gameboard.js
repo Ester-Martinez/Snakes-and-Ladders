@@ -23,7 +23,6 @@ board.src = "./Images/template-snakes.png";
 function drawBoard() {
 board1.forEach((x) => {
   ctx.save();
-  ctx.translate(60, 0)
   ctx.beginPath();
   ctx.strokeStyle = "black"
   ctx.fillStyle = x.color;
