@@ -21,9 +21,6 @@ let board = new Image();
 board.src = "./Images/template-snakes.png";
 
 function drawBoard() {
-//   let positionX = 0;
-//   let positionY = 0;
-//   ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
 board1.forEach((x) => {
   ctx.save();
   ctx.translate(60, 0)
@@ -39,13 +36,13 @@ board1.forEach((x) => {
 }
 
 // Draw title
-// function drawTitle(){
+function drawTitle(){
 // ctx.save();
-// ctx.font = "80px Verdana";
-// ctx.textAlign = "center"
-// ctx.fillText("SNAKES & LADDERS", w2*0.8, h*0.12);
+ctx.font = "60px Verdana";
+ctx.textAlign = "center"
+ctx.fillText("SNAKES & LADDERS", w2*0.7, h*0.1);
 // ctx.restore();
-// }
+}
 
 // Draw the space where the die animation will be displayed
 function drawDieSpace() {
@@ -71,7 +68,7 @@ function throwDieInstructions() {
 
 function drawGameSpace() {
   drawBoard();
-  // drawTitle()
+  drawTitle()
   drawDieSpace();
   throwDieInstructions();
   
