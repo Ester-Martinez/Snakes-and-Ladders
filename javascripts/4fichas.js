@@ -57,8 +57,8 @@ class Pawn {
     }
   }
 }
-let redPawn = new Pawn(redPawnImg, 133, 560, 1);
-let yellowPawn = new Pawn(yellowPawnImg, 93, 560, 2);
+let redPawn = new Pawn(redPawnImg, 113, 590, 1);
+let yellowPawn = new Pawn(yellowPawnImg, 93, 590, 2);
 
 function drawPawns() {
   redPawn.drawPawn();
