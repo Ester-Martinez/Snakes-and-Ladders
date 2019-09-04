@@ -10,8 +10,8 @@ function startGame() {
     userControls();
     drawPawns();
     die.drawDie();
-    // checkPositionRed()
+    redPawn.checkPosition();
+    yellowPawn.checkPosition();
     counter++;
   }, 1000 / 60);
-  
 }

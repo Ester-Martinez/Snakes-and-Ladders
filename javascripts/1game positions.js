@@ -96,21 +96,27 @@ const yellowMap = [
   [1228, 55]
 ];
 
-function checkPositionRed() {
-  
-    if (redPawn.x < redMap[finalPos][0]) {
-      redPawn.moveRight();
-    }
-    else if (redPawn.x > redMap[finalPos][0]) {
-      redPawn.moveLeft();
-    }
-    else {
-  
-    if (redPawn.y < redMap[finalPos][1]) {
-      redPawn.moveDown();
-    }
-    else if (redPawn.y > redMap[finalPos][1]) {
-      redPawn.moveUp();
-    }
-  }
-}
+
+
+
+
+
+
+
+// function checkPosition(pawn, map) {
+//   if (pawn.x < map[finalPos][0]) {
+//     pawn.moveRight();
+//   }
+//   else if (pawn.x > map[finalPos][0]) {
+//     redPawn.moveLeft();
+//   }
+//   else {
+
+//   if (pawn.y < map[finalPos][1]) {
+//     redPawn.moveDown();
+//   }
+//   else if (pawn.y > map[finalPos][1]) {
+//     redPawn.moveUp();
+//   }
+// }
+// }
