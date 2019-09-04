@@ -3,19 +3,18 @@ function randomInt(min, max) {
 }
 
 let colors = [
-  "rgb(248,236,136)",
   "rgb(103,191,207)",
   "rgb(203,239,101)",
   "rgb(240,115,100)",
   "rgb(165,148,203)",
-  "white"
+  "rgb(248,236,136)",
 ];
-
+function createRoll() {
+  return Math.floor(Math.random() * colors.length-1) + 1;
+}
 var randomColors = function() {
-  function createRoll() {
-    return Math.floor(Math.random() * colors.length) + 1;
-  }
-  let rollResults = Array(45)
+
+  let rollResults = Array(46)
     .fill()
     .map(createRoll);
   return rollResults;
@@ -30,59 +29,59 @@ class Squares {
   }
 }
 
-const width = 110;
+const width = 100;
 let board1 = Array(46)
   .fill()
   .map((x, idx) => {
     if (idx <= 8) {
       x = idx * width;
-      y = h - 120;
+      y = h - 110;
       color = colors[randomColors()[idx]];
     }
     if (idx === 9) {
-      x = 880 - (idx - 9) * width;
-      y = h - 230;
-      color = colors[randomColors[idx]];
+      x = 800 - (idx - 9) * width;
+      y = h - 210;
+      color = colors[randomColors()[idx]];
     }
     if (idx > 9 && idx <= 17) {
-      x = 880 - (idx - 9) * width;
-      y = h - 260;
-      color = colors[randomColors[idx]];
+      x = 800 - (idx - 9) * width;
+      y = h - 230;
+      color = colors[randomColors()[idx]];
     }
     if (idx === 18) {
       x = (idx - 18) * width;
-      y = h - 370;
-      color = colors[randomColors[idx]];
+      y = h - 330;
+      color = colors[randomColors()[idx]];
     }
     if (idx > 18 && idx <= 26) {
       x = (idx - 18) * width;
-      y = h - 400;
-      color = colors[randomColors[idx]];
+      y = h - 350;
+      color = colors[randomColors()[idx]];
     }
     if (idx === 27) {
-      x = 880 - (idx - 27) * width;
-      y = h - 510;
-      color = colors[randomColors[idx]];
+      x = 800 - (idx - 27) * width;
+      y = h - 450;
+      color = colors[randomColors()[idx]];
     }
     if (idx > 27 && idx <= 35) {
-      x = 880 - (idx - 27) * width;
-      y = h - 540;
-      color = colors[randomColors[idx]];
+      x = 800 - (idx - 27) * width;
+      y = h - 470;
+      color = colors[randomColors()[idx]];
     }
     if (idx === 36) {
       x = (idx - 36) * width;
-      y = h - 650;
-      color = colors[randomColors[idx]];
+      y = h - 570;
+      color = colors[randomColors()[idx]];
     }
     if (idx > 36 && idx <= 44) {
       x = (idx - 36) * width;
-      y = h - 680;
-      color = colors[randomColors[idx]];
+      y = h - 590;
+      color = colors[randomColors()[idx]];
     }
     if (idx === 45) {
-      x = 880 - (idx - 45) * width;
-      y = h - 790;
-      color = colors[randomColors[idx]];
+      x = 800 - (idx - 45) * width;
+      y = h - 690;
+      color = colors[randomColors()[idx]];
     }
     return new Squares(x, y, color);
   })

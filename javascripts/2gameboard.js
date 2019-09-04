@@ -24,13 +24,17 @@ function drawBoard() {
 //   let positionX = 0;
 //   let positionY = 0;
 //   ctx.drawImage(board, positionX, positionY, w * 0.8, h - 30);
-board1.forEach(() => {
-  debugger
+board1.forEach((x) => {
+  ctx.save();
+  ctx.translate(60, 0)
   ctx.beginPath();
-  ctx.color = this.color;
-  ctx.rect(this.x, this.y, width, width);
+  ctx.strokeStyle = "black"
+  ctx.fillStyle = x.color;
+  ctx.rect(x.x, x.y, width, width);
   ctx.fill();
+  ctx.stroke();
   ctx.closePath();
+  ctx.restore();
 });
 }
 
