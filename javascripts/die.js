@@ -1,7 +1,7 @@
-const minRolls = 2;
-const maxRolls = 3;
-var r = 0; //Casilla para la roja
-var y = 0; //Casilla para la amarilla.
+// const minRolls = 2;
+// const maxRolls = 3;
+var finalPosR = 0; //Casilla para la roja
+var finalPosY = 0; //Casilla para la amarilla.
 
 const die1 = new Image();
 die1.src = "./Images/die1.png";
@@ -19,37 +19,42 @@ die6.src = "./Images/die6.png";
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
-var die = {
-  sides: 6,
-  result: 0,
+
+class Die {
+  constructor(sides, widthPos, heightPos, sideDimension) {
+    this.sides = sides;
+    this.result = 0;
+    this.widthPos = widthPos;
+    this.heightPos = heightPos;
+    this.sideDimension = sideDimension
+  }
   roll() {
-    rollResult = Math.floor(Math.random() * die.sides) + 1
-    r += rollResult;
-    if (r>45) {r=45}
+    let rollResult = Math.floor(Math.random() * this.sides) + 1
+    finalPos += rollResult;
+    if (finalPos>45) {finalPos=45}
     return this.result = rollResult;
   }
-};
-
-function drawDie() {
-  switch (die.result) {
-    case 1:
-      ctx.drawImage(die1, w * 0.825, h * 0.68, 200, 200);
-      break;
-    case 2:
-      ctx.drawImage(die2, w * 0.825, h * 0.68, 200, 200);
-      break;
-    case 3:
-      ctx.drawImage(die3, w * 0.825, h * 0.68, 200, 200);
-      break;
-    case 4:
-      ctx.drawImage(die4, w * 0.825, h * 0.68, 200, 200);
-      break;
-    case 5:
-      ctx.drawImage(die5, w * 0.825, h * 0.68, 200, 200);
-      break;
-    case 6:
-      ctx.drawImage(die6, w * 0.82, h * 0.68, 200, 200);
-      break;
+  drawDie() {
+    switch (this.result) {
+      case 1:
+        ctx.drawImage(die1, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+      case 2:
+        ctx.drawImage(die2, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+      case 3:
+        ctx.drawImage(die3, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+      case 4:
+        ctx.drawImage(die4, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+      case 5:
+        ctx.drawImage(die5, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+      case 6:
+        ctx.drawImage(die6, this.widthPos, this.heightPos, this.sideDimension, this.sideDimension);
+        break;
+    }
   }
 }
-
+let die = new Die(6, w*0.825, h*0.65, 170)

@@ -46,8 +46,8 @@ function drawDieSpace() {
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
-  ctx.translate(w * 0.88, h2 + 50);
-  ctx.font = "30px Verdana";
+  ctx.translate(w * 0.88, h2 + 40);
+  ctx.font = "28px Verdana";
   ctx.textAlign = "center";
   ctx.fillText("Click ENTER", 0, 0);
   ctx.fillText("to THROW THE DIE", 0, 50);
@@ -62,6 +62,7 @@ function drawGameSpace() {
   // drawTitle()
   drawDieSpace();
   throwDieInstructions();
+  
 }
 function resetCanvas() {
   ctx.clearRect(0, 0, w, h);

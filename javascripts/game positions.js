@@ -1,4 +1,4 @@
-const redPos = [
+const redMap = [
   [163, 700],
   [303, 700],
   [443, 700],
@@ -47,7 +47,7 @@ const redPos = [
   [1283, 55]
 ];
 
-const yellowPos = [
+const yellowMap = [
   [108, 700],
   [248, 700],
   [388, 700],
@@ -97,18 +97,19 @@ const yellowPos = [
 ];
 
 function checkPositionRed() {
-    if (redPawn.x < redPos[r][0]) {
+  
+    if (redPawn.x < redMap[finalPos][0]) {
       redPawn.moveRight();
     }
-    else if (redPawn.x > redPos[r][0]) {
+    else if (redPawn.x > redMap[finalPos][0]) {
       redPawn.moveLeft();
     }
     else {
   
-    if (redPawn.y < redPos[r][1]) {
+    if (redPawn.y < redMap[finalPos][1]) {
       redPawn.moveDown();
     }
-    else if (redPawn.y > redPos[r][1]) {
+    else if (redPawn.y > redMap[finalPos][1]) {
       redPawn.moveUp();
     }
   }

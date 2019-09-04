@@ -1,11 +1,11 @@
 const speed = 10; //Velocidad movimiento fichas
-var jugadores = [1, 2]; //Número de jugadores
-var numTurnos = jugadores.length;
-
-var turno; //Quien tira el dado.
-var turnRed = false;
-var turnYellow = false;
-var movimiento = 0; //Indica el avance o retroceso de la ficha que
+let jugadores = [1, 2]; //Número de jugadores
+let numTurnos = jugadores.length;
+let currentPos = 0;
+let turno; //Quien tira el dado.
+let turnRed = false;
+let turnYellow = false;
+let movimiento = 0; //Indica el avance o retroceso de la ficha que
 // tiene el turno.
 
 function userControls() {
