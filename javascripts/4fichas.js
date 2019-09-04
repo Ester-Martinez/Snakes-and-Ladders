@@ -38,6 +38,7 @@ class Pawn {
   }
   checkPosition() {
     if (this.color === "red") {
+      debugger
       if (this.currentPos === this.destinyPos) {
         this.destinyPos++;
         if (this.destinyPos === this.finalPos) {
@@ -49,7 +50,7 @@ class Pawn {
             this.x === board1[this.destinyPos].playerRedXPos &&
             this.y === board1[this.destinyPos].playerRedYPos
           ) {
-            this.destinyPos++;
+            this.currentPos++
           } else if (this.x < board1[this.destinyPos].playerRedXPos) {
             this.moveRight();
           } else if (this.x > board1[this.destinyPos].playerRedXPos) {
@@ -74,7 +75,7 @@ class Pawn {
             this.x === board1[this.destinyPos].PlayerYellXPos &&
             this.y === board1[this.destinyPos].PlayerYellYPos
           ) {
-            this.destinyPos++;
+            this.currentPos++;
           } else if (this.x < board1[this.destinyPos].PlayerYellXPos) {
             this.moveRight();
           } else if (this.x > board1[this.destinyPos].PlayerYellXPos) {

@@ -6,6 +6,7 @@ function startGame() {
   this.intervalID = setInterval(() => {
     resetCanvas();
     drawGameSpace();
+    
     userControls();
     drawPawns();
     die.drawDie();
