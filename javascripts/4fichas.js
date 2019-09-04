@@ -43,24 +43,54 @@ class Pawn {
         if (this.destinyPos === this.finalPos) {
           return turn++;
         }
-      } else if (this.currentPos < this.destinyPos) {
-        if (this.x < board1[this.destinyPos].x) {
-          this.moveRight();
-        } else if (this.x > board1[this.destinyPos][0]) {
-          this.moveLeft();
-        } else {
-          if (this.y < board1[this.destinyPos][1]) {
+      } else {
+        if (this.currentPos < this.destinyPos) {
+          if (
+            this.x === board1[this.destinyPos].playerRedXPos &&
+            this.y === board1[this.destinyPos].playerRedYPos
+          ) {
+            this.destinyPos++;
+          } else if (this.x < board1[this.destinyPos].playerRedXPos) {
+            this.moveRight();
+          } else if (this.x > board1[this.destinyPos].playerRedXPos) {
+            this.moveLeft();
+          } else if (this.y < board1[this.destinyPos].playerRedYPos) {
             this.moveDown();
-          } else if (this.y > board1[this.destinyPos][1]) {
+          } else if (this.y > board1[this.destinyPos].playerRedYPos) {
             this.moveUp();
           }
         }
       }
     }
     if (this.color === "yellow") {
+      if (this.currentPos === this.destinyPos) {
+        this.destinyPos++;
+        if (this.destinyPos === this.finalPos) {
+          return turn++;
+        }
+      } else {
+        if (this.currentPos < this.destinyPos) {
+          if (
+            this.x === board1[this.destinyPos].PlayerYellXPos &&
+            this.y === board1[this.destinyPos].PlayerYellYPos
+          ) {
+            this.destinyPos++;
+          } else if (this.x < board1[this.destinyPos].PlayerYellXPos) {
+            this.moveRight();
+          } else if (this.x > board1[this.destinyPos].PlayerYellXPos) {
+            this.moveLeft();
+          } else if (this.y < board1[this.destinyPos].PlayerYellYPos) {
+            this.moveDown();
+          } else if (this.y > board1[this.destinyPos].PlayerYellYPos) {
+            this.moveUp();
+          }
+        }
+      }
     }
   }
 }
+
+
 let redPawn = new Pawn(
   redPawnImg,
   board1[0].playerRedXPos,
