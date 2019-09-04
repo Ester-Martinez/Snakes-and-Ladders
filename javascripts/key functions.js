@@ -1,12 +1,9 @@
 const speed = 10; //Velocidad movimiento fichas
+let numberOfPlayers = 2;
 let jugadores = [1, 2]; //Número de jugadores
 let numTurnos = jugadores.length;
 let currentPos = 0;
-let turno; //Quien tira el dado.
-let turnRed = false;
-let turnYellow = false;
-let movimiento = 0; //Indica el avance o retroceso de la ficha que
-// tiene el turno.
+let turn = 1; //Quien tira el dado.
 
 function userControls() {
   window.onkeydown = function(e) {
@@ -24,7 +21,7 @@ function userControls() {
         redPawn.moveDown();
         break;
       case "Enter":
-        die.roll();
+        checkTurn();
         break;
     }
   };
