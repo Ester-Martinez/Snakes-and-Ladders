@@ -1,8 +1,3 @@
-// const minRolls = 2;
-// const maxRolls = 3;
-var finalPosR = 0; //Casilla para la roja
-var finalPosY = 0; //Casilla para la amarilla.
-
 const die1 = new Image();
 die1.src = "./Images/die1.png";
 const die2 = new Image();
@@ -96,3 +91,5 @@ class Die {
   }
 }
 let die = new Die(6, w * 0.825, h * 0.65, 170);
+
+

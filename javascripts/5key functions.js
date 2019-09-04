@@ -3,7 +3,7 @@ let numberOfPlayers = 2;
 let jugadores = [1, 2]; //Número de jugadores
 let numTurnos = jugadores.length;
 let currentPos = 0;
-let turn = 1; //Quien tira el dado.
+let turn = 0; //Quien tira el dado.
 
 function userControls() {
   window.onkeydown = function(e) {

@@ -20,7 +20,7 @@ class Pawn {
     ctx.drawImage(this.image, 0, 0, 28 * 1.2, 52 * 1.2);
     ctx.restore();
   }
-  
+
   moveLeft() {
     this.x -= speed;
     console.log(this.x);
@@ -38,26 +38,23 @@ class Pawn {
     console.log(this.y);
   }
   checkPosition() {
-    debugger
-    switch (this.currentPos) {
-      case this.currentPos === this.destinyPos:
-        this.destinyPos++;
-        if (this.destinyPos === this.finalPos) {
-          return;
+    if (this.currentPos === this.destinyPos) {
+      this.destinyPos++;
+      if (this.destinyPos === this.finalPos) {
+        return turn++;
+      }
+    } else if (this.currentPos < this.destinyPos) {
+      if (this.x < this.map[this.destinyPos][0]) {
+        this.moveRight();
+      } else if (this.x > this.map[this.destinyPos][0]) {
+        this.moveLeft();
+      } else {
+        if (this.y < this.map[this.destinyPos][1]) {
+          this.moveDown();
+        } else if (this.y > this.map[this.destinyPos][1]) {
+          this.moveUp();
         }
-        break;
-      case this.currentPos < this.destinyPos:
-        if (this.x < this.map[this.destinyPos][0]) {
-          moveRight();
-        } else if (this.x > this.map[this.destinyPos][0]) {
-          moveLeft();
-        } else {
-          if (this.y < this.map[this.destinyPos][1]) {
-            moveDown();
-          } else if (this.y > this.map[this.destinyPos][1]) {
-            moveUp();
-          }
-        }
+      }
     }
   }
 }
@@ -69,15 +66,24 @@ function drawPawns() {
   yellowPawn.drawPawn();
 }
 function checkTurn() {
+  if (turn === 0) {
+    turn = 1;
+  }
   if (turn > numberOfPlayers) {
     turn = 1;
   }
   if (redPawn.order === turn) {
-    turn++;
     return die.roll(redPawn);
   }
   if (yellowPawn.order === turn) {
-    turn++;
     return die.roll(yellowPawn);
+  }
+}
+function checkPositionActivePlayer() {
+  if (redPawn.order === turn) {
+    return redPawn.checkPosition();
+  }
+  if (yellowPawn.order === turn) {
+    return yellowPawn.checkPosition();
   }
 }
