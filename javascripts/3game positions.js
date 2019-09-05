@@ -52,6 +52,7 @@ class Squares {
     this.PlayerYellYPos = y + 27;
     this.snakeIsHere = false;
     this.ladderIsHere = false;
+    
   }
 }
 

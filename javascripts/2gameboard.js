@@ -62,7 +62,7 @@ function drawGameSpace() {
   drawTitle();
   drawDieSpace();
   throwDieInstructions();
-  // snake1.drawSnake();
+
   // snake2.drawSnake();
   // snake3.drawSnake();
   ladder.drawLadder();

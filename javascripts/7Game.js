@@ -2,10 +2,12 @@
 //   startGame();
 // };
 let coverImg = new Image();
-coverImg.src = "./Images/Portada.jpg";
+coverImg.src = "./Images/Portada.png";
+
 
 coverImg.onload = function() {
   ctx.drawImage(coverImg, 0, 0, w, h);
+
   }
 
 myCanvasDOMEl.onclick = function() {
@@ -21,6 +23,7 @@ function startGame() {
     userControls();
     drawPawns();
     die.drawDie();
+    snake1.drawSnake();
     checkPositionActivePlayer();
     if (redPawn.currentPos === 45 || yellowPawn.currentPos === 45) {
       clearInterval(intervalID);

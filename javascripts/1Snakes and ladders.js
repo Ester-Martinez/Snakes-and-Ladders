@@ -9,8 +9,6 @@ const snake3Img = new Image();
 snake3Img.src = "./Images/snake3.png";
 const snake4Img = new Image();
 snake4Img.src = "./Images/snake4.png";
-const snake5Img = new Image();
-snake5Img.src = "./Images/snake-red-green-cartoon-template-ladder-long.png"
 const ladder1Img = new Image();
 ladder1Img.src = "./Images/ladder1.png"
 
