@@ -1,10 +1,9 @@
-
 // Draw board in window
 // let board = new Image();
 // board.src = "./Images/template-snakes.png";
 
 function drawBoard() {
-  board1.forEach(x => {
+  board1.forEach((x, idx) => {
     ctx.save();
     ctx.beginPath();
     ctx.strokeStyle = "black";
@@ -12,6 +11,15 @@ function drawBoard() {
     ctx.rect(x.x, x.y, width, width);
     ctx.fill();
     ctx.stroke();
+    ctx.font = "20px Verdana";
+    ctx.fillStyle = "black";
+    if (idx === 0) {
+      ctx.fillText(`START`, x.x + 55, x.y + 25);
+    } else if (idx === 45) {
+      ctx.fillText(`HOME`, x.x + 50, x.y + 60);
+    } else {
+      ctx.fillText(`${idx}`, x.x + 20, x.y + 25);
+    }
     ctx.closePath();
     ctx.restore();
   });
@@ -52,5 +60,3 @@ function drawGameSpace() {
   throwDieInstructions();
   snake.drawSnake();
 }
-
-

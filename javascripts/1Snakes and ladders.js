@@ -21,8 +21,8 @@ class Snake {
   drawSnake() {
     ctx.save();
     // ctx.translate(this.x, this.y);
-    ctx.drawImage(this.image, this.x, this.y, 100, 200);
+    ctx.drawImage(this.image, this.x, this.y, 299, 225);
     ctx.restore();
   }
 }
-let snake = new Snake(snake5, w2, h2,);
+let snake = new Snake(snake1, w2, h2);
