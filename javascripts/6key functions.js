@@ -8,16 +8,16 @@ function userControls() {
   window.onkeydown = function(e) {
     switch (e.key) {
       case "ArrowLeft":
-        redPawn.moveLeft();
+        ladder.moveLeft();
         break;
       case "ArrowRight":
-        redPawn.moveRight();
+        ladder.moveRight();
         break;
       case "ArrowUp":
-        redPawn.moveUp();
+        ladder.moveUp();
         break;
       case "ArrowDown":
-        redPawn.moveDown();
+        ladder.moveDown();
         break;
       case "Enter":
         checkTurn();

@@ -3,7 +3,7 @@
 // board.src = "./Images/template-snakes.png";
 
 function drawBoard() {
-  board1.forEach((x, idx) => {
+  board1.forEach((x) => {
     ctx.save();
     ctx.beginPath();
     ctx.strokeStyle = "black";
@@ -11,7 +11,13 @@ function drawBoard() {
     ctx.rect(x.x, x.y, width, width);
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Verdana";
+    ctx.closePath();
+    ctx.restore();
+  });
+}
+function drawNumbers() {
+board1.forEach((x, idx) => {
+  ctx.font = "20px Verdana";
     ctx.fillStyle = "black";
     if (idx === 0) {
       ctx.fillText(`START`, x.x + 55, x.y + 25);
@@ -20,9 +26,7 @@ function drawBoard() {
     } else {
       ctx.fillText(`${idx}`, x.x + 20, x.y + 25);
     }
-    ctx.closePath();
-    ctx.restore();
-  });
+})
 }
 
 // Draw title
@@ -58,5 +62,9 @@ function drawGameSpace() {
   drawTitle();
   drawDieSpace();
   throwDieInstructions();
-  snake.drawSnake();
+  // snake1.drawSnake();
+  // snake2.drawSnake();
+  // snake3.drawSnake();
+  ladder.drawLadder();
+  drawNumbers();
 }
