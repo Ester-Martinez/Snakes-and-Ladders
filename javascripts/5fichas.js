@@ -2,23 +2,35 @@ const redPawnImg = new Image();
 redPawnImg.src = "./Images/redPawn.png";
 const yellowPawnImg = new Image();
 yellowPawnImg.src = "./Images/yellowPawn.png";
+const pawnOffsets = [[20, 27], [59, 27]];
 
 class Pawn {
-  constructor(image, x, y, order, color) {
+  constructor(image, order, color) {
     this.image = image;
-    this.x = x;
-    this.y = y;
+    this.x = 0;
+    this.y = 0;
     this.color = color;
     this.currentPos = 0;
     this.destinyPos = 0;
     this.finalPos = 0;
     this.order = order;
+    this.ladderActive = false;
+    this.snakeActive = false;
   }
   drawPawn() {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.drawImage(this.image, 0, 0, 28 * 1.2, 52 * 1.2);
     ctx.restore();
+  }
+  resetPawn() {
+    this.x = board1[0].x + pawnOffsets[this.order][0];
+    this.y = board1[0].y + pawnOffsets[this.order][1];
+    if (this.color === "red") {
+      board1[0].redPlayer = this;
+    } else {
+      board1[0].yellowPlayer = this;
+    }
   }
   moveLeft() {
     this.x -= speed;
@@ -37,94 +49,133 @@ class Pawn {
     console.log(this.y);
   }
   checkPosition() {
-    if (this.color === "red") {
+    if (this.ladderActive) {
+      let auxLadder = board1[this.currentPos].ladder;
+      this.finalPos = auxLadder.finalBox;
+      if (this.y < board1[this.finalPos].y + pawnOffsets[this.order][1]) {
+        this.moveDown();
+      } else if (
+        this.y >
+        board1[this.finalPos].y + pawnOffsets[this.order][1]
+      ) {
+        this.moveUp();
+      }
+      if (this.x < board1[this.finalPos].x + pawnOffsets[this.order][0]) {
+        this.moveRight();
+      } else if (
+        this.x >
+        board1[this.finalPos].x + pawnOffsets[this.order][0]
+      ) {
+        this.moveLeft();
+      }
+      if (
+        this.x ===
+        board1[this.finalPos].x + pawnOffsets[this.order][0]
+        && this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
+      ) {
+        this.currentPos = this.finalPos;
+        this.ladderActive = false;
+      }
+      
+    } else if (this.snakeActive) {
+        let auxSnake = board1[this.currentPos].snake;
+        this.finalPos = auxSnake.finalBox;
+        if (this.y < board1[this.finalPos].y + pawnOffsets[this.order][1]) {
+          this.moveDown();
+        } else if (
+          this.y >
+          board1[this.finalPos].y + pawnOffsets[this.order][1]
+        ) {
+          this.moveUp();
+        }
+        if (this.x < board1[this.finalPos].x + pawnOffsets[this.order][0]) {
+          this.moveRight();
+        } else if (
+          this.x >
+          board1[this.finalPos].x + pawnOffsets[this.order][0]
+        ) {
+          this.moveLeft();
+        }
+        if (
+          this.x ===
+          board1[this.finalPos].x + pawnOffsets[this.order][0]
+          && this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
+        ) {
+          this.currentPos = this.finalPos;
+          this.snakeActive = false;
+        }
+        
+      
+
+    } else {
       if (this.currentPos < this.finalPos) {
-        if (this.currentPos === this.destinyPos) {
-          this.destinyPos++;
+        if (
+          this.x ===
+          board1[this.currentPos + 1].x + pawnOffsets[this.order][0]
+          && this.y === board1[this.currentPos + 1].y + pawnOffsets[this.order][1]
+        ) {
+          this.currentPos++;
         } else {
           if (
-            this.x === board1[this.destinyPos].playerRedXPos &&
-            this.y === board1[this.destinyPos].playerRedYPos
+            this.y <
+            board1[this.currentPos + 1].y + pawnOffsets[this.order][1]
           ) {
-            this.currentPos++;
-            if (this.currentPos === this.finalPos) {
-              checkLadder();
-              checkSnake();
-              ++turn;
-            }
-          } else if (this.y < board1[this.destinyPos].playerRedYPos) {
             this.moveDown();
-          } else if (this.y > board1[this.destinyPos].playerRedYPos) {
+          } else if (
+            this.y >
+            board1[this.currentPos + 1].y + pawnOffsets[this.order][1]
+          ) {
             this.moveUp();
-          } else if (this.x < board1[this.destinyPos].playerRedXPos) {
+          } else if (
+            this.x <
+            board1[this.currentPos + 1].x + pawnOffsets[this.order][0]
+          ) {
             this.moveRight();
-          } else if (this.x > board1[this.destinyPos].playerRedXPos) {
+          } else if (
+            this.x >
+            board1[this.currentPos + 1].x + pawnOffsets[this.order][0]
+          ) {
             this.moveLeft();
           }
         }
-      }
-    }
-    if (this.color === "yellow") {
-      if (this.currentPos < this.finalPos) {
-        if (this.currentPos === this.destinyPos) {
-          this.destinyPos++;
-        } else {
-          if (
-            this.x === board1[this.destinyPos].PlayerYellXPos &&
-            this.y === board1[this.destinyPos].PlayerYellYPos
-          ) {
-            this.currentPos++;
-            if (this.currentPos === this.finalPos) {
-              ++turn;
-            }
-          } else if (this.y < board1[this.destinyPos].PlayerYellYPos) {
-            this.moveDown();
-          } else if (this.y > board1[this.destinyPos].PlayerYellYPos) {
-            this.moveUp();
-          } else if (this.x < board1[this.destinyPos].PlayerYellXPos) {
-            this.moveRight();
-          } else if (this.x > board1[this.destinyPos].PlayerYellXPos) {
-            this.moveLeft();
-          }
+      } else {
+        if (!this.checkLadder() && !this.checkSnake()) {
+          ++turn;
         }
       }
     }
   }
   checkLadder() {
-    if (board1[this.finalPos].hasLadder) {
-      
+    if (board1[this.currentPos].ladder != null) {
+      this.ladderActive = true;
+      return true;
+    } else {
+      return false;
     }
   }
   checkSnake() {
-
+    if (board1[this.currentPos].snake != null) {
+      this.snakeActive = true;
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 
-let redPawn = new Pawn(
-  redPawnImg,
-  board1[0].playerRedXPos,
-  board1[0].playerRedYPos,
-  1,
-  "red"
-);
-let yellowPawn = new Pawn(
-  yellowPawnImg,
-  board1[0].PlayerYellXPos,
-  board1[0].PlayerYellYPos,
-  2,
-  "yellow"
-);
+let redPawn = new Pawn(redPawnImg, 0, "red");
+let yellowPawn = new Pawn(yellowPawnImg, 1, "yellow");
 
 function drawPawns() {
   redPawn.drawPawn();
   yellowPawn.drawPawn();
 }
 function checkTurn() {
-  if (turn === 0) {
-    turn = 1;
+  if (turn === -1) {
+    turn = 0;
   }
-  if (turn > numberOfPlayers) {
-    turn = 1;
+  if (turn >= numberOfPlayers) {
+    turn = 0;
   }
   if (redPawn.order === turn) {
     die.roll(redPawn);

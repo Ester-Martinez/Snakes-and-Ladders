@@ -46,12 +46,10 @@ class Squares {
     this.x = x;
     this.y = y;
     this.color = color;
-    this.playerRedXPos = x + 20;
-    this.playerRedYPos = y + 27;
-    this.PlayerYellXPos = x + 59;
-    this.PlayerYellYPos = y + 27;
-    this.hasSnake = false;
-    this.hasLadder = false;
+    this.redPlayer = null;
+    this.yellowPlayer = null;
+    this.ladder = null;
+    this.snake = null;
   }
 }
 

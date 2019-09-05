@@ -45,7 +45,7 @@ class Snake {
     let box = randomInt(0, snakeCoordinates[this.num].length - 1);
     this.initialBox = snakeCoordinates[this.num][box][0];
     this.finalBox = snakeCoordinates[this.num][box][1];
-    board1[this.initialBox].hasSnake = true;
+    board1[this.initialBox].snake = this;
     this.x = board1[this.initialBox].x + snakeOffsets[this.num][0];
     this.y = board1[this.initialBox].y + snakeOffsets[this.num][1];
   }
@@ -73,7 +73,7 @@ class Ladder {
     let box = randomInt(0, ladderCoordinates[this.num].length - 1);
     this.initialBox = ladderCoordinates[this.num][box][0];
     this.finalBox = ladderCoordinates[this.num][box][1];
-    board1[this.initialBox].hasLadder = true;
+    board1[this.initialBox].ladder = this;
     this.x = board1[this.initialBox].x + ladderOffsets[this.num][0];
     this.y = board1[this.initialBox].y + ladderOffsets[this.num][1];
   }
