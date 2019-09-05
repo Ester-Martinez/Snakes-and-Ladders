@@ -11,7 +11,6 @@ class Pawn {
     this.y = 0;
     this.color = color;
     this.currentPos = 0;
-    this.destinyPos = 0;
     this.finalPos = 0;
     this.order = order;
     this.ladderActive = false;
@@ -34,19 +33,15 @@ class Pawn {
   }
   moveLeft() {
     this.x -= speed;
-    console.log(this.x);
   }
   moveRight() {
     this.x += speed;
-    console.log(this.x);
   }
   moveUp() {
     this.y -= speed;
-    console.log(this.y);
   }
   moveDown() {
     this.y += speed;
-    console.log(this.y);
   }
   checkPosition() {
     if (this.ladderActive) {
@@ -69,52 +64,56 @@ class Pawn {
         this.moveLeft();
       }
       if (
-        this.x ===
-        board1[this.finalPos].x + pawnOffsets[this.order][0]
-        && this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
+        this.x === board1[this.finalPos].x + pawnOffsets[this.order][0] &&
+        this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
       ) {
         this.currentPos = this.finalPos;
+        turn++;
         this.ladderActive = false;
       }
-      
     } else if (this.snakeActive) {
-        let auxSnake = board1[this.currentPos].snake;
-        this.finalPos = auxSnake.finalBox;
-        if (this.y < board1[this.finalPos].y + pawnOffsets[this.order][1]) {
-          this.moveDown();
-        } else if (
-          this.y >
-          board1[this.finalPos].y + pawnOffsets[this.order][1]
-        ) {
-          this.moveUp();
-        }
-        if (this.x < board1[this.finalPos].x + pawnOffsets[this.order][0]) {
-          this.moveRight();
-        } else if (
-          this.x >
-          board1[this.finalPos].x + pawnOffsets[this.order][0]
-        ) {
-          this.moveLeft();
-        }
-        if (
-          this.x ===
-          board1[this.finalPos].x + pawnOffsets[this.order][0]
-          && this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
-        ) {
-          this.currentPos = this.finalPos;
-          this.snakeActive = false;
-        }
-        
-      
-
+      let auxSnake = board1[this.currentPos].snake;
+      this.finalPos = auxSnake.finalBox;
+      if (this.y < board1[this.finalPos].y + pawnOffsets[this.order][1]) {
+        this.moveDown();
+      } else if (
+        this.y >
+        board1[this.finalPos].y + pawnOffsets[this.order][1]
+      ) {
+        this.moveUp();
+      }
+      if (this.x < board1[this.finalPos].x + pawnOffsets[this.order][0]) {
+        this.moveRight();
+      } else if (
+        this.x >
+        board1[this.finalPos].x + pawnOffsets[this.order][0]
+      ) {
+        this.moveLeft();
+      }
+      if (
+        this.x === board1[this.finalPos].x + pawnOffsets[this.order][0] &&
+        this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
+      ) {
+        this.currentPos = this.finalPos;
+        turn++;
+        this.snakeActive = false;
+      }
     } else {
       if (this.currentPos < this.finalPos) {
         if (
           this.x ===
-          board1[this.currentPos + 1].x + pawnOffsets[this.order][0]
-          && this.y === board1[this.currentPos + 1].y + pawnOffsets[this.order][1]
+            board1[this.currentPos + 1].x + pawnOffsets[this.order][0] &&
+          this.y === board1[this.currentPos + 1].y + pawnOffsets[this.order][1]
         ) {
           this.currentPos++;
+          if (
+            this.x === board1[this.finalPos].x + pawnOffsets[this.order][0] &&
+            this.y === board1[this.finalPos].y + pawnOffsets[this.order][1]
+          ) {
+            if (!this.checkLadder() && !this.checkSnake()) {
+              turn++;
+            }
+          }
         } else {
           if (
             this.y <
@@ -138,14 +137,11 @@ class Pawn {
             this.moveLeft();
           }
         }
-      } else {
-        if (!this.checkLadder() && !this.checkSnake()) {
-          ++turn;
-        }
       }
     }
   }
   checkLadder() {
+    debugger
     if (board1[this.currentPos].ladder != null) {
       this.ladderActive = true;
       return true;
