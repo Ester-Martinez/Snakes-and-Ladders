@@ -1,20 +1,19 @@
-// window.onload = function() {
-//   startGame();
-// };
-let coverImg = new Image();
-coverImg.src = "./Images/Portada.png";
-
-
-coverImg.onload = function() {
-  ctx.drawImage(coverImg, 0, 0, w, h);
-
-  }
-
-myCanvasDOMEl.onclick = function() {
-  ctx.clearRect(0, 0, w, h);
+window.onload = function() {
   startGame();
-}
+};
+// let coverImg = new Image();
+// coverImg.src = "./Images/Portada.png";
 
+// coverImg.onload = function() {
+//   ctx.drawImage(coverImg, 0, 0, w, h);
+//   }
+
+// myCanvasDOMEl.onclick = function() {
+//   ctx.clearRect(0, 0, w, h);
+//   startGame();
+// }
+
+snake1.placeSnake()
 function startGame() {
   let counter = 0;
   this.intervalID = setInterval(() => {
