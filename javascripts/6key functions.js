@@ -8,16 +8,16 @@ function userControls() {
   window.onkeydown = function(e) {
     switch (e.key) {
       case "ArrowLeft":
-        snake1.moveLeft();
+        ladder0.moveLeft();
         break;
       case "ArrowRight":
-        snake1.moveRight();
+        ladder0.moveRight();
         break;
       case "ArrowUp":
-        snake1.moveUp();
+        ladder0.moveUp();
         break;
       case "ArrowDown":
-        snake1.moveDown();
+        ladder0.moveDown();
         break;
       case "Enter":
         checkTurn();

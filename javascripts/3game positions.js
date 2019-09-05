@@ -52,8 +52,11 @@ class Squares {
     this.PlayerYellYPos = y + 27;
     this.snakeIsHere = false;
     this.ladderIsHere = false;
-    this.snakeXPosition = x - 170;
-    this.snakeYPosition = y + 15;
+    this.snakeXPosition = 0;
+    this.snakeYPosition = 0;
+    this.ladderXPosition = x - 17;
+    this.ladderYPosition = y - 95;
+
   }
 }
 

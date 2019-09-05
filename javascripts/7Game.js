@@ -13,7 +13,10 @@ window.onload = function() {
 //   startGame();
 // }
 
-snake1.placeSnake()
+snake0.placeSnake();
+snake1.placeSnake();
+ladder0.placeLadder();
+ladder1.placeLadder();
 function startGame() {
   let counter = 0;
   this.intervalID = setInterval(() => {
@@ -22,7 +25,6 @@ function startGame() {
     userControls();
     drawPawns();
     die.drawDie();
-    snake1.drawSnake();
     checkPositionActivePlayer();
     if (redPawn.currentPos === 45 || yellowPawn.currentPos === 45) {
       clearInterval(intervalID);
