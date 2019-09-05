@@ -3,11 +3,11 @@ function randomInt(min, max) {
 }
 
 let colors = [
-  "rgb(103,191,207)",
-  "rgb(203,239,101)",
-  "rgb(240,115,100)",
-  "rgb(165,148,203)",
-  "rgb(248,236,136)",
+  "rgba(103,191,207,.6)",
+  "rgba(203,239,101,.6)",
+  "rgba(240,115,100,.6)",
+  "rgba(165,148,203,.6)",
+  "rgba(248,236,136,.6)",
   "white"
 ];
 function randomColors() {
@@ -50,13 +50,8 @@ class Squares {
     this.playerRedYPos = y + 27;
     this.PlayerYellXPos = x + 59;
     this.PlayerYellYPos = y + 27;
-    this.snakeIsHere = false;
-    this.ladderIsHere = false;
-    this.snakeXPosition = 0;
-    this.snakeYPosition = 0;
-    this.ladderXPosition = x - 17;
-    this.ladderYPosition = y - 95;
-
+    this.hasSnake = false;
+    this.hasLadder = false;
   }
 }
 

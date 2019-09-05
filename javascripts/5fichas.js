@@ -48,6 +48,8 @@ class Pawn {
           ) {
             this.currentPos++;
             if (this.currentPos === this.finalPos) {
+              checkLadder();
+              checkSnake();
               ++turn;
             }
           } else if (this.y < board1[this.destinyPos].playerRedYPos) {
@@ -87,6 +89,14 @@ class Pawn {
         }
       }
     }
+  }
+  checkLadder() {
+    if (board1[this.finalPos].hasLadder) {
+      
+    }
+  }
+  checkSnake() {
+
   }
 }
 

@@ -8,7 +8,23 @@ snake3Img.src = "./Images/snake3.png";
 const snake4Img = new Image();
 snake4Img.src = "./Images/snake4.png";
 const ladder1Img = new Image();
-ladder1Img.src = "./Images/ladder1.png";
+ladder1Img.src = "./Images/ladder0-inverso.png";
+const ladder2Img = new Image();
+ladder2Img.src = "./Images/ladder0.png";
+const snakeCoordinates = [ 
+  [[20, 17], [21,16], [22,15], [23,14]], 
+  [[41, 30], [42, 29], [43, 28]]
+];
+const ladderCoordinates = [
+  [[5, 13], [6,12], [7,11], [8,10]],
+  [[32, 40], [33, 39], [34, 38]]
+]
+const snakeOffsets = [
+  [-175, 15], [-100, 15]
+]
+const ladderOffsets = [
+  [-82, -145], [13, -145]
+]
 
 class Snake {
   constructor(image, x, y, num) {
@@ -16,6 +32,8 @@ class Snake {
     this.x = x;
     this.y = y;
     this.num = num;
+    this.initialBox;
+    this.finalBox;
   }
   drawSnake() {
     ctx.save();
@@ -24,36 +42,12 @@ class Snake {
     ctx.restore();
   }
   placeSnake() {
-    let pos0 = randomInt(21, 24);
-    let pos1 = randomInt(41, 43);
-    let snakePositions = [pos0, pos1];
-    switch (this.num) {
-      case 0:
-        board1[snakePositions[0]].snakeIsHere = true;
-        board1[snakePositions[0]].snakeXPosition =
-          board1[snakePositions[0]].x - 175;
-        board1[snakePositions[0]].snakeYPosition =
-          board1[snakePositions[0]].y + 15;
-        this.x = board1[snakePositions[0]].snakeXPosition;
-        this.y = board1[snakePositions[0]].snakeYPosition;
-        break;
-      case 1:
-        board1[snakePositions[1]].snakeIsHere = true;
-        board1[snakePositions[1]].snakeXPosition =
-          board1[snakePositions[1]].x - 100;
-        board1[snakePositions[1]].snakeYPosition =
-          board1[snakePositions[1]].y + 15;
-        this.x = board1[snakePositions[1]].snakeXPosition;
-        this.y = board1[snakePositions[1]].snakeYPosition;
-        break;
-      // case 2:
-      //   board1[snakePositions[2]].snakeIsHere = true;
-      //   board1[snakePositions[2]].snakeXPosition = x - 170;
-      //   board1[snakePositions[2]].snakeYPosition = y + 15;
-      //   this.x = board1[snakePositions[2]].snakeXPosition;
-      //   this.y = board1[snakePositions[2]].snakeYPosition;
-      //   break;
-    }
+    let box = randomInt(0, snakeCoordinates[this.num].length - 1);
+    this.initialBox = snakeCoordinates[this.num][box][0];
+    this.finalBox = snakeCoordinates[this.num][box][1];
+    board1[this.initialBox].hasSnake = true;
+    this.x = board1[this.initialBox].x + snakeOffsets[this.num][0];
+    this.y = board1[this.initialBox].y + snakeOffsets[this.num][1];
   }
 }
 let snake0 = new Snake(snake1Img, w2, h2, 0);
@@ -61,51 +55,28 @@ let snake1 = new Snake(snake2Img, w2, h2, 1);
 // let snake2 = new Snake(snake3Img, w2, h2, 2);
 
 class Ladder {
-  constructor(image, x, y, numLad) {
+  constructor(image, x, y, num) {
     this.image = image;
     this.x = x;
     this.y = y;
-    this.numLad = numLad;
+    this.num = num;
+    this.initialBox;
+    this.finalBox;
   }
   drawLadder() {
     ctx.save();
     // ctx.translate(this.x, this.y);
-    ctx.drawImage(this.image, this.x, this.y, 167, 195);
+    ctx.drawImage(this.image, this.x, this.y, 180, 270);
     ctx.restore();
   }
   placeLadder() {
-    let posLad0 = randomInt(5, 8);
-    let posLad1 = randomInt(31, 34);
-    let ladderPositions = [posLad0, posLad1];
-    switch (this.numLad) {
-      case 0:
-        board1[ladderPositions[0]].ladderIsHere = true;
-        this.x = board1[ladderPositions[0]].ladderXPosition;
-        this.y = board1[ladderPositions[0]].ladderYPosition;
-        break;
-      case 1:
-        board1[ladderPositions[1]].ladderIsHere = true;
-        this.x = board1[ladderPositions[1]].ladderXPosition;
-        this.y = board1[ladderPositions[1]].ladderYPosition;
-        break;
-    }
-  }
-  moveLeft() {
-    this.x -= speed;
-    console.log(this.x);
-  }
-  moveRight() {
-    this.x += speed;
-    console.log(this.x);
-  }
-  moveUp() {
-    this.y -= speed;
-    console.log(this.y);
-  }
-  moveDown() {
-    this.y += speed;
-    console.log(this.y);
+    let box = randomInt(0, ladderCoordinates[this.num].length - 1);
+    this.initialBox = ladderCoordinates[this.num][box][0];
+    this.finalBox = ladderCoordinates[this.num][box][1];
+    board1[this.initialBox].hasLadder = true;
+    this.x = board1[this.initialBox].x + ladderOffsets[this.num][0];
+    this.y = board1[this.initialBox].y + ladderOffsets[this.num][1];
   }
 }
 let ladder0 = new Ladder(ladder1Img, w2, h2, 0);
-let ladder1 = new Ladder(ladder1Img, w2, h2, 1);
+let ladder1 = new Ladder(ladder2Img, w2, h2, 1);
