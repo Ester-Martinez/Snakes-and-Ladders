@@ -5,11 +5,7 @@ let numTurnos = jugadores.length;
 let turn = 0; //Quien tira el dado.
 
 function userControls() {
-  window.onkeydown = function(e) {
-    switch (e.key) {
-      case "Enter":
-        checkTurn();
-        break;
-    }
+  myCanvasDOMEl.onclick = function() {
+    checkTurn();
   };
 }

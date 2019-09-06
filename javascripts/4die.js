@@ -10,15 +10,14 @@ const die5 = new Image();
 die5.src = "./Images/die5.png";
 const die6 = new Image();
 die6.src = "./Images/die6.png";
-
-
+const dieOffsets = [dieSpace.width / 3, (dieSpace.height / 3) + 10];
 
 class Die {
-  constructor(sides, widthPos, heightPos, sideDimension) {
+  constructor(sides, sideDimension) {
+    this.x = 0;
+    this.y = 0;
     this.sides = sides;
     this.result = 0;
-    this.widthPos = widthPos;
-    this.heightPos = heightPos;
     this.sideDimension = sideDimension;
   }
   roll(pawn) {
@@ -29,14 +28,20 @@ class Die {
     }
     return (this.result = rollResult);
   }
+  placeDie() {
+    debugger
+    this.x = dieSpace.x + dieOffsets[0];
+    this.y = dieSpace.y + dieOffsets[1];
+    dieSpace.die = this;
+  }
   drawDieImg(dieImg) {
     ctx.drawImage(
       dieImg,
-      this.widthPos,
-      this.heightPos,
+      this.x,
+      this.y,
       this.sideDimension,
       this.sideDimension
-    )
+    );
   }
   drawDie() {
     switch (this.result) {
@@ -61,6 +66,4 @@ class Die {
     }
   }
 }
-let die = new Die(6, w * 0.825, h * 0.65, 170);
-
-
+let die = new Die(6, 170);

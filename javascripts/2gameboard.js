@@ -1,7 +1,4 @@
 // Draw board in window
-// let board = new Image();
-// board.src = "./Images/template-snakes.png";
-
 function drawBoard() {
   board1.forEach((x) => {
     ctx.save();
@@ -28,43 +25,69 @@ board1.forEach((x, idx) => {
     }
 })
 }
-
 // Draw title
 function drawTitle() {
   // ctx.save();
-  ctx.font = "60px Verdana";
+  ctx.font = "60px Chilanka";
   ctx.textAlign = "center";
   ctx.fillText("SNAKES & LADDERS", w2 * 0.7, h * 0.1);
   // ctx.restore();
 }
-
 // Draw the space where the die animation will be displayed
-function drawDieSpace() {
-  ctx.beginPath();
-  ctx.rect(w * 0.78, h2, w * 0.2, h2 - 50);
-  ctx.strokeStyle = "black";
-  ctx.stroke();
-  ctx.closePath();
+class DieSpace {
+  constructor(
+    x,
+    y,
+  ) {
+    this.x = x;
+    this.y = y;
+    this.width = w * 0.3;
+    this.height = h2 - 50;
+    this.die = null;
+  }
+  drawDieSpace() {
+    ctx.beginPath();
+    ctx.rect(this.x, this.y, this.width, this.height);
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+    ctx.closePath();
+  }
 }
+let dieSpace = new DieSpace(w * 0.68, h2)
+let dieInstructionsOffset = [dieSpace.width/2, 40]
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
-  ctx.translate(w * 0.88, h2 + 40);
-  ctx.font = "28px Verdana";
+  ctx.translate(dieSpace.x + dieInstructionsOffset[0], h2 + 40);
+  ctx.font = "32px Chilanka";
   ctx.textAlign = "center";
-  ctx.fillText("Click ENTER", 0, 0);
+  ctx.fillText("Click anywhere", 0, 0);
   ctx.fillText("to THROW THE DIE", 0, 50);
   ctx.restore();
 }
+function nextTurnMessage() {
+  if (redPawn.order === turn) {
+  return ("Its your turn, red player")
+  }
+  if (yellowPawn.order === turn) {
+    return ("Its your turn, yellow player")
 
+  }}
+function drawNextTurn() {
+  ctx.save();
+  ctx.translate(w * 0.8, h2-50);
+  ctx.font = "28px Chilanka";
+  ctx.textAlign = "center";
+  ctx.fillText(`${nextTurnMessage()}`, 0, 0);
+  ctx.restore();
+}
 function drawGameSpace() {
   drawBoard();
   drawTitle();
-  drawDieSpace();
+  dieSpace.drawDieSpace();
   throwDieInstructions();
   snake0.drawSnake();
   snake1.drawSnake();
-  // snake3.drawSnake();
   ladder0.drawLadder();
   ladder1.drawLadder();
   drawNumbers();

@@ -69,6 +69,9 @@ class Pawn {
       ) {
         this.currentPos = this.finalPos;
         turn++;
+        if (turn >= numberOfPlayers) {
+          turn = 0;
+        }
         this.ladderActive = false;
       }
     } else if (this.snakeActive) {
@@ -96,6 +99,9 @@ class Pawn {
       ) {
         this.currentPos = this.finalPos;
         turn++;
+        if (turn >= numberOfPlayers) {
+          turn = 0;
+        }
         this.snakeActive = false;
       }
     } else {
@@ -112,6 +118,9 @@ class Pawn {
           ) {
             if (!this.checkLadder() && !this.checkSnake()) {
               turn++;
+              if (turn >= numberOfPlayers) {
+                turn = 0;
+              }
             }
           }
         } else {
@@ -141,7 +150,6 @@ class Pawn {
     }
   }
   checkLadder() {
-    debugger
     if (board1[this.currentPos].ladder != null) {
       this.ladderActive = true;
       return true;
@@ -170,9 +178,7 @@ function checkTurn() {
   if (turn === -1) {
     turn = 0;
   }
-  if (turn >= numberOfPlayers) {
-    turn = 0;
-  }
+
   if (redPawn.order === turn) {
     die.roll(redPawn);
   }

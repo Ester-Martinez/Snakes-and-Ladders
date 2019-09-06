@@ -11,20 +11,16 @@ const ladder1Img = new Image();
 ladder1Img.src = "./Images/ladder0-inverso.png";
 const ladder2Img = new Image();
 ladder2Img.src = "./Images/ladder0.png";
-const snakeCoordinates = [ 
-  [[20, 17], [21,16], [22,15], [23,14]], 
+const snakeCoordinates = [
+  [[20, 17], [21, 16], [22, 15], [23, 14]],
   [[41, 30], [42, 29], [43, 28]]
 ];
 const ladderCoordinates = [
-  [[5, 13], [6,12], [7,11], [8,10]],
+  [[5, 13], [6, 12], [7, 11], [8, 10]],
   [[32, 40], [33, 39], [34, 38]]
-]
-const snakeOffsets = [
-  [-175, 15], [-100, 15]
-]
-const ladderOffsets = [
-  [-82, -145], [13, -145]
-]
+];
+const snakeOffsets = [[-175, 15], [-100, 15]];
+const ladderOffsets = [[-82, -145], [13, -145]];
 
 class Snake {
   constructor(image, x, y, num) {
@@ -52,7 +48,6 @@ class Snake {
 }
 let snake0 = new Snake(snake1Img, w2, h2, 0);
 let snake1 = new Snake(snake2Img, w2, h2, 1);
-// let snake2 = new Snake(snake3Img, w2, h2, 2);
 
 class Ladder {
   constructor(image, x, y, num) {

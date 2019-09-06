@@ -1,7 +1,4 @@
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
+// Colors for squares
 let colors = [
   "rgba(103,191,207,.6)",
   "rgba(203,239,101,.6)",

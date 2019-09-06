@@ -8,7 +8,9 @@ const PI = Math.PI;
 const PI_DOUBLE = Math.PI * 2;
 const PI_HALF = Math.PI / 2;
 
-function randomInt(min, max) {return Math.floor(Math.random() * (max - min + 1) + min);}
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 // Set dimensions of the game space
 function setCanvasDimensions() {
