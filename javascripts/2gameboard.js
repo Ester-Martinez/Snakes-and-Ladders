@@ -54,7 +54,8 @@ class DieSpace {
   }
 }
 let dieSpace = new DieSpace(w * 0.68, h2)
-let dieInstructionsOffset = [dieSpace.width/2, 40]
+
+const dieInstructionsOffset = [dieSpace.width/2, 40]
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
@@ -73,17 +74,36 @@ function nextTurnMessage() {
     return ("Its your turn, yellow player")
 
   }}
+  function drawingColor() {
+    if (redPawn.order === turn) {
+      return ("red")
+      }
+      if (yellowPawn.order === turn) {
+        return ("yellow")
+      }
+  } 
 function drawNextTurn() {
   ctx.save();
-  ctx.translate(w * 0.8, h2-50);
+  ctx.beginPath();
+  ctx.translate(w * 0.68, h2 - 110);
+  ctx.fillStyle = drawingColor()
+  ctx.fillRect(0, 0, dieSpace.width, 60);
+  ctx.strokeRect(0, 0, dieSpace.width, 60)
+  ctx.closePath();
+  ctx.restore();
+  ctx.save()
+  ctx.beginPath()
+  ctx.translate(w * 0.82, h2-70);
   ctx.font = "28px Chilanka";
   ctx.textAlign = "center";
   ctx.fillText(`${nextTurnMessage()}`, 0, 0);
+  ctx.closePath()
   ctx.restore();
 }
 function drawGameSpace() {
   drawBoard();
   drawTitle();
+  drawNextTurn();
   dieSpace.drawDieSpace();
   throwDieInstructions();
   snake0.drawSnake();
@@ -91,4 +111,7 @@ function drawGameSpace() {
   ladder0.drawLadder();
   ladder1.drawLadder();
   drawNumbers();
+}
+function drawSquareInfo() {
+
 }

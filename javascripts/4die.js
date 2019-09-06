@@ -10,7 +10,7 @@ const die5 = new Image();
 die5.src = "./Images/die5.png";
 const die6 = new Image();
 die6.src = "./Images/die6.png";
-const dieOffsets = [dieSpace.width / 3, (dieSpace.height / 3) + 10];
+const dieOffsets = [(dieSpace.width / 3) - 10, (dieSpace.height / 3) + 10];
 
 class Die {
   constructor(sides, sideDimension) {

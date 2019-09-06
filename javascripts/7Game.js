@@ -18,7 +18,6 @@ window.onload = function() {
 // }
 // }
 
-
 snake0.placeSnake();
 snake1.placeSnake();
 ladder0.placeLadder();
@@ -35,7 +34,6 @@ function startGame() {
     drawPawns();
     die.drawDie();
     checkPositionActivePlayer();
-    drawNextTurn();
 
     if (redPawn.currentPos === 45 || yellowPawn.currentPos === 45) {
       clearInterval(intervalID);
