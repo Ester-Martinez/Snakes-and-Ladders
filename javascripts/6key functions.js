@@ -6,6 +6,7 @@ let turn = 0; //Quien tira el dado.
 
 function userControls() {
   myCanvasDOMEl.onclick = function() {
+    dieSound.play();
     checkTurn();
   };
 }

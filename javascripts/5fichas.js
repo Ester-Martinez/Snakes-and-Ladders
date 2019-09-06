@@ -3,6 +3,9 @@ redPawnImg.src = "./Images/redPawn.png";
 const yellowPawnImg = new Image();
 yellowPawnImg.src = "./Images/yellowPawn.png";
 const pawnOffsets = [[20, 27], [59, 27]];
+const ladderSound = new Audio('../Sounds/cheering.wav');
+const snakeSound = new Audio('../Sounds/evil-laugh.mp3');
+
 
 class Pawn {
   constructor(image, order, color) {
@@ -151,6 +154,7 @@ class Pawn {
   }
   checkLadder() {
     if (board1[this.currentPos].ladder != null) {
+      ladderSound.play()
       this.ladderActive = true;
       return true;
     } else {
@@ -159,6 +163,7 @@ class Pawn {
   }
   checkSnake() {
     if (board1[this.currentPos].snake != null) {
+      snakeSound.play()
       this.snakeActive = true;
       return true;
     } else {

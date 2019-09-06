@@ -10,6 +10,8 @@ const die5 = new Image();
 die5.src = "./Images/die5.png";
 const die6 = new Image();
 die6.src = "./Images/die6.png";
+this.dieSound = new Audio('../Sounds/Shake And Roll Dice-SoundBible.com-591494296.mp3');
+
 const dieOffsets = [(dieSpace.width / 3) - 10, (dieSpace.height / 3) + 10];
 
 class Die {
