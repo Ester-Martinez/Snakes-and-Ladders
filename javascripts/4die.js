@@ -29,7 +29,6 @@ class Die {
     return (this.result = rollResult);
   }
   placeDie() {
-    debugger
     this.x = dieSpace.x + dieOffsets[0];
     this.y = dieSpace.y + dieOffsets[1];
     dieSpace.die = this;

@@ -1,6 +1,6 @@
 // Draw board in window
 function drawBoard() {
-  board1.forEach((x) => {
+  board1.forEach(x => {
     ctx.save();
     ctx.beginPath();
     ctx.strokeStyle = "black";
@@ -13,8 +13,8 @@ function drawBoard() {
   });
 }
 function drawNumbers() {
-board1.forEach((x, idx) => {
-  ctx.font = "20px Chilanka";
+  board1.forEach((x, idx) => {
+    ctx.font = "20px Chilanka";
     ctx.fillStyle = "black";
     if (idx === 0) {
       ctx.fillText(`START`, x.x + 55, x.y + 25);
@@ -23,22 +23,19 @@ board1.forEach((x, idx) => {
     } else {
       ctx.fillText(`${idx}`, x.x + 20, x.y + 25);
     }
-})
+  });
 }
 // Draw title
 function drawTitle() {
   // ctx.save();
   ctx.font = "60px Chilanka";
   ctx.textAlign = "center";
-  ctx.fillText("SNAKES & LADDERS", w2 * 0.7, 55);
+  ctx.fillText("SNAKES & LADDERS", 450, 55);
   // ctx.restore();
 }
 // Draw the space where the die animation will be displayed
 class DieSpace {
-  constructor(
-    x,
-    y,
-  ) {
+  constructor(x, y) {
     this.x = x;
     this.y = y;
     this.width = w * 0.3;
@@ -53,9 +50,9 @@ class DieSpace {
     ctx.closePath();
   }
 }
-let dieSpace = new DieSpace(w * 0.68, h2)
+let dieSpace = new DieSpace(w * 0.68, h2);
 
-const dieInstructionsOffset = [dieSpace.width/2, 40]
+const dieInstructionsOffset = [dieSpace.width / 2, 40];
 // Draw die instructions to show the user how to use the die roll.
 function throwDieInstructions() {
   ctx.save();
@@ -68,36 +65,36 @@ function throwDieInstructions() {
 }
 function nextTurnMessage() {
   if (redPawn.order === turn) {
-  return ("Its your turn, red player")
+    return "Its your turn, red player";
   }
   if (yellowPawn.order === turn) {
-    return ("Its your turn, yellow player")
-
-  }}
-  function drawingColor() {
-    if (redPawn.order === turn) {
-      return ("red")
-      }
-      if (yellowPawn.order === turn) {
-        return ("yellow")
-      }
-  } 
+    return "Its your turn, yellow player";
+  }
+}
+function drawingColor() {
+  if (redPawn.order === turn) {
+    return "red";
+  }
+  if (yellowPawn.order === turn) {
+    return "yellow";
+  }
+}
 function drawNextTurn() {
   ctx.save();
   ctx.beginPath();
   ctx.translate(w * 0.68, 110);
-  ctx.fillStyle = drawingColor()
+  ctx.fillStyle = drawingColor();
   ctx.fillRect(0, 0, dieSpace.width, 60);
-  ctx.strokeRect(0, 0, dieSpace.width, 60)
+  ctx.strokeRect(0, 0, dieSpace.width, 60);
   ctx.closePath();
   ctx.restore();
-  ctx.save()
-  ctx.beginPath()
+  ctx.save();
+  ctx.beginPath();
   ctx.translate(w * 0.82, 145);
   ctx.font = "28px Chilanka";
   ctx.textAlign = "center";
   ctx.fillText(`${nextTurnMessage()}`, 0, 0);
-  ctx.closePath()
+  ctx.closePath();
   ctx.restore();
 }
 function drawGameSpace() {
@@ -112,6 +109,4 @@ function drawGameSpace() {
   ladder1.drawLadder();
   drawNumbers();
 }
-function drawSquareInfo() {
-
-}
+function drawSquareInfo() {}
