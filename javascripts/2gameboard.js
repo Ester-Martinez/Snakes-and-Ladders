@@ -14,7 +14,7 @@ function drawBoard() {
 }
 function drawNumbers() {
 board1.forEach((x, idx) => {
-  ctx.font = "20px Verdana";
+  ctx.font = "20px Chilanka";
     ctx.fillStyle = "black";
     if (idx === 0) {
       ctx.fillText(`START`, x.x + 55, x.y + 25);
@@ -30,7 +30,7 @@ function drawTitle() {
   // ctx.save();
   ctx.font = "60px Chilanka";
   ctx.textAlign = "center";
-  ctx.fillText("SNAKES & LADDERS", w2 * 0.7, h * 0.1);
+  ctx.fillText("SNAKES & LADDERS", w2 * 0.7, 55);
   // ctx.restore();
 }
 // Draw the space where the die animation will be displayed
