@@ -85,7 +85,7 @@ function nextTurnMessage() {
 function drawNextTurn() {
   ctx.save();
   ctx.beginPath();
-  ctx.translate(w * 0.68, h2 - 110);
+  ctx.translate(w * 0.68, 110);
   ctx.fillStyle = drawingColor()
   ctx.fillRect(0, 0, dieSpace.width, 60);
   ctx.strokeRect(0, 0, dieSpace.width, 60)
@@ -93,7 +93,7 @@ function drawNextTurn() {
   ctx.restore();
   ctx.save()
   ctx.beginPath()
-  ctx.translate(w * 0.82, h2-70);
+  ctx.translate(w * 0.82, 145);
   ctx.font = "28px Chilanka";
   ctx.textAlign = "center";
   ctx.fillText(`${nextTurnMessage()}`, 0, 0);
