@@ -27,10 +27,11 @@ function startGame() {
     checkPositionActivePlayer();
 
     if (redPawn.currentPos === 45 || yellowPawn.currentPos === 45) {
-      clearInterval(intervalID);
-      resetCanvas();
-      ctx.drawImage(endImg, 0, 0, w, h);
-      ;
+      setTimeout(() => {
+        clearInterval(intervalID);
+        resetCanvas();
+        ctx.drawImage(endImg, 0, 0, w, h);
+      }, 1000)
     }
     counter++;
   }, 1000 / 60);
